@@ -35,4 +35,4 @@ for machine in machines:
         if abs(now - release_time) <= datetime.timedelta(hours=240) and machine['is_released']:
             client = NtfyClient('newbox', ntfy_url)
             client.send(f"\nA new machine has been released on HTB.\n\n**Name:** {machine['name']}\n**Difficulty:** {machine['difficulty_text']}\n**OS:** {machine['os']}\n\n Get to it!", f"New Machine {machine['name']} Just Dropped!", priority=client.MessagePriority.HIGH, tags=['package'], format_as_markdown=True)
-            
+
