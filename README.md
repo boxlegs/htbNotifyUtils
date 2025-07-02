@@ -1,5 +1,5 @@
-# HTB Machine Release Notifier
-Cheeky PoC for polling new machine/challenge (TBD) releases with support for ntfy notifications.
+# HTB Notification Utilities
+Cheeky collection of PoCs for polling HTB endpoints, with support for ntfy notifications.
 
 ### Endpoints of Interest
 It seems that the API endpoints have changed somewhat since current tools (such as [pyhackthebox](https://pypi.org/project/PyHackTheBox/)) were updated. For example, the current machine listing endpoints are different, thus `get_machines()` for example no longer works.
