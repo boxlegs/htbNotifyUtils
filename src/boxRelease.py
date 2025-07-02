@@ -44,9 +44,15 @@ def main():
             release_time = datetime.datetime.fromisoformat(machine['release_time'])
             now = datetime.datetime.now(pytz.timezone(TIMEZONE))
             
-            if abs(now - release_time) <= datetime.timedelta(hours=24) and machine['is_released']:
+            if abs(now - release_time) <= datetime.timedelta(hours=240) and machine['is_released']:
                 ntfy_client = NtfyClient('newbox', ntfy_url)
-                ntfy_client.send(f"\nA new machine has been released on HTB.\n\n**Name:** {machine['name']}\n**Difficulty:** {machine['difficulty_text']}\n**OS:** {machine['os']}\n\n Get to it!", f"New Machine {machine['name']} Just Dropped!", priority=ntfy_client.MessagePriority.HIGH, tags=['package'], format_as_markdown=True)
+                ntfy_client.send(f"\nA new machine has been released on HTB.\n\n**Name:** "
+                                 f"{machine['name']}\n**Difficulty:** {machine['difficulty_text']}\n"
+                                 f"**OS:** {machine['os']}\n\n Get to it!",
+                                 f"New Machine {machine['name']} Just Dropped!", 
+                                priority=ntfy_client.MessagePriority.HIGH, 
+                                tags=['package'], 
+                                format_as_markdown=True)
 
 
 if __name__ == "__main__":
