@@ -6,6 +6,7 @@ import pytz
 from python_ntfy import NtfyClient
 import argparse
 
+API_BASE = "https://labs.hackthebox.com/api/v4/"
 
 load_dotenv()
 
@@ -30,7 +31,7 @@ def main():
         exit(1)
         
     try:   
-        htb_client = HTBClient(app_token=ACCESS_TOKEN)
+        htb_client = HTBClient(app_token=ACCESS_TOKEN, api_base=API_BASE)
         data = htb_client.do_request("season/machines")
     except Exception as e:
         print(ntfy_client.send(f"Your HTB access token has expired, or API endpoints have changed.", "FATAL ERROR", tags=["warning"], priority=ntfy_client.MessagePriority.HIGH))
